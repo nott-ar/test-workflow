@@ -134,7 +134,7 @@ end
 # from the maintainers list at {BASE_PATH}/maintainers.yml
 # and check if the maintainers are valid or not
 def checkMaintainersData()
-    maintainersList = JSON.parse(YAML.load(File.open("#{BASE_PATH}/maintainers.yml", :safe => true).to_json))
+    maintainersList = JSON.parse(YAML.load(File.open("#{BASE_PATH}/maintainers.yml"), :safe => true).to_json)
     for city in maintainersList.keys do
         for maintainerName in maintainersList[city] do
             begin
@@ -169,7 +169,7 @@ end
 #   - Indicates the file location of the list of projects present
 #   - Values can be either "projects.yml" or "social-good-projects.yml" 
 def checkProjectsData(fileName)
-    projectsList = JSON.parse(YAML.load(File.open("#{BASE_PATH}/#{fileName}"), :safe => true).to_json))
+    projectsList = JSON.parse(YAML.load(File.open("#{BASE_PATH}/#{fileName}"), :safe => true).to_json)
     if fileName == "projects.yml"
         issueCategory = "ossProjects"
     else
@@ -208,8 +208,8 @@ end
 # Check if any new maintainer is added
 # If yes -> Add the maintainer as reviewer
 def checkMaintainersFileChanged
-    maintainersListPR = JSON.parse(YAML.load(File.open("#{BASE_PATH}/maintainers.yml"), :safe => true).to_json))
-    maintainersList = JSON.parse(YAML.load(File.open("india-main/#{BASE_PATH}/maintainers.yml"), :safe => true).to_json))
+    maintainersListPR = JSON.parse(YAML.load(File.open("#{BASE_PATH}/maintainers.yml"), :safe => true).to_json)
+    maintainersList = JSON.parse(YAML.load(File.open("india-main/#{BASE_PATH}/maintainers.yml"), :safe => true).to_json)
     maintainersMain = []
     maintainersPR = []
     for maintainers in maintainersList.values do
